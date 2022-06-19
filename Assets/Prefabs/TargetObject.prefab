@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a326c1c2c8a94780b6b97e7b3bccb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  r: 240
+  g: 217
+  b: 135
+  a: 255
+  metallic: 0.27
+  smoothness: 1
   lifespan: 5
 --- !u!1001 &7439297531436954017
 PrefabInstance:

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FadeOutTarget : MonoBehaviour
 {
+    public byte r = 240;
+    public byte g = 217;
+    public byte  b = 135;
+    public byte a = 255;
+    public float metallic = 0.27f;
+    public float smoothness = 1.0f;
+
     public float lifespan = 5f;
     private float currentTime = 0f;
 
@@ -13,6 +20,25 @@ public class FadeOutTarget : MonoBehaviour
     void Start()
     {
         detectionStatusVariables = GameObject.Find("ImageTarget").GetComponent<DetectionStatusVariables>();
+
+        // Make the target object with a probability of 10%
+        if (Random.value <= 0.1)
+        {
+            lifespan = 2f;
+            Transform target = transform.Find("target");
+            float offset = 0f;
+
+            foreach (Transform child in target)
+            {
+                Material material = child.GetComponent<Renderer>().material;
+                material.color = new Color32(r, g, b, a);
+                material.SetFloat("_Metallic", metallic + offset); 
+                material.SetFloat("_Smoothness", smoothness);
+
+                offset += 0.1f;
+            }
+
+        }
     }
 
     // Update is called once per frame
