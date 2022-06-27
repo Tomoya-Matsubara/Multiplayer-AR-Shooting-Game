@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBullet : MonoBehaviour
 {   
     private Rigidbody rb;
-    private float speed = 30f;
+    private float speed = 100f;
     private Vector3 direction = new Vector3(0,-1,-2);
     private float max_dis = 300f;
     private Vector3 pos_start = new Vector3(0,150,200);
