@@ -17,7 +17,19 @@ public class CollisionJudge : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {   
-        score += 50;
+        Transform target = transform.Find("target");
+
+        foreach (Transform child in target)
+        {
+            Material material = child.GetComponent<Renderer>().material;
+            if (material.smoothness==0.27){
+                score+=100;
+            } else{
+                score+=50;
+            }
+            break;
+        }
+        
         inputField.text = score.ToString();
         
         if (currentTime > lifespan)
