@@ -22,7 +22,7 @@ public class CollisionJudge : MonoBehaviour
         foreach (Transform child in target)
         {
             Material material = child.GetComponent<Renderer>().material;
-            if (material.smoothness==0.27){
+            if (material.GetFloat("_Smoothness")==0.27){
                 score+=100;
             } else{
                 score+=50;
@@ -32,26 +32,24 @@ public class CollisionJudge : MonoBehaviour
         
         inputField.text = score.ToString();
         
-        if (currentTime > lifespan)
+        bool canDestroy = false;
+        foreach (Transform child in target)
         {
-            Transform target = transform.Find("target");
-            bool canDestroy = false;
-            foreach (Transform child in target)
-            {
-                child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, 1);
-                print(child.GetComponent<Renderer>().material.color);
-    
-                if (child.GetComponent<Renderer>().material.color.a <= 0)
-                {
-                    canDestroy = true;
-                }
-            }
+            child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, 10);
+            print(child.GetComponent<Renderer>().material.color);
 
-            if (canDestroy)
+            if (child.GetComponent<Renderer>().material.color.a <= 0)
             {
-                Destroy(gameObject);
+                canDestroy = true;
             }
         }
+
+        if (canDestroy)
+        {
+            Destroy(gameObject);
+        }
+        
         Debug.Log("Collision is occured");
+        Debug.Log(canDestroy)
     }
 }
