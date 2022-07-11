@@ -9,4 +9,9 @@ public class BulletScript : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(dir);
         Destroy(gameObject, 3);
     }
+
+    void Update()
+    {
+        Debug.Log($"{transform.position}");
+    }
 }
