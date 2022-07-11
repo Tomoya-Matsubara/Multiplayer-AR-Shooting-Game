@@ -50,6 +50,6 @@ public class CollisionJudge : MonoBehaviour
         }
         
         Debug.Log("Collision is occured");
-        Debug.Log(canDestroy)
+        Debug.Log(canDestroy);
     }
 }
