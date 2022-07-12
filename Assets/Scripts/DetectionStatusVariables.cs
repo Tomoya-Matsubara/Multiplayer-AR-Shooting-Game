@@ -15,7 +15,7 @@ public class DetectionStatusVariables : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Called when the marker is detected

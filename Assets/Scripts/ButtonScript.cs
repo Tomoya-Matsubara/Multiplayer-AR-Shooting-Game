@@ -10,10 +10,38 @@ public class ButtonScript : MonoBehaviour
     private float remainingTime = 0.0f;
     public GameObject BulletsContainer;
 
+    public GameObject NormalBulletPrefab;
+    public GameObject LargeBulletPrefab;
+    public GameObject SmallBulletPrefab;
+    private GameObject bulletPrefab;
+
     public void lauchButton() //Shoot�{�^���������ꂽ��
     {
         // GameObject Bullet = Instantiate(Bulletprefab, transform.position, transform.rotation);
         // Bullet.GetComponent<BulletScript>().Shoot(Bullet.transform.forward * force);
+        
+    }
+
+    void Start()
+    {
+        switch (BulletManager.bulletID)
+        {
+            case 0: 
+                bulletPrefab = NormalBulletPrefab;
+                chargeTime = 0.5f;
+                break;
+            case 1:
+                bulletPrefab = LargeBulletPrefab;
+                chargeTime = 1f;
+                break;
+            case 2:
+                bulletPrefab = SmallBulletPrefab;
+                break;
+            default:
+                bulletPrefab = NormalBulletPrefab;
+                chargeTime = 0.2f;
+                break;
+        }
     }
 
     void Update()
@@ -33,7 +61,7 @@ public class ButtonScript : MonoBehaviour
             // Debug.Log("Tapped!");
 
             // Instantiate the bullet
-            GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             bullet.transform.localScale = 100 * Vector3.one;
             bullet.transform.SetParent(BulletsContainer.transform, false);
 
