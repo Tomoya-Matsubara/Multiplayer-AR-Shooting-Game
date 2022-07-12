@@ -29,8 +29,8 @@ public class ButtonScript : MonoBehaviour
         if (Input.GetMouseButton(0)) 
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log($"Camera ray: {ray}");
-            Debug.Log("Tapped!");
+            // Debug.Log($"Camera ray: {ray}");
+            // Debug.Log("Tapped!");
 
             // Instantiate the bullet
             GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);

@@ -59,7 +59,7 @@ public class FadeOutTarget : MonoBehaviour
             foreach (Transform child in target)
             {
                 child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, 1);
-                print(child.GetComponent<Renderer>().material.color);
+                // Debug.Log(child.GetComponent<Renderer>().material.color);
     
                 if (child.GetComponent<Renderer>().material.color.a <= 0)
                 {

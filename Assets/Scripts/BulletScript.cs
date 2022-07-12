@@ -12,6 +12,6 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"{transform.position}");
+
     }
 }
