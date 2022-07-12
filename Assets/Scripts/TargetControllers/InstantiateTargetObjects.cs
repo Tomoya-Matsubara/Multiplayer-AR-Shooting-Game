@@ -27,7 +27,8 @@ public class InstantiateTargetObjects : MonoBehaviour
             return;
         }
 
-        if (currentTime >= 2) {
+        if (currentTime >= 2) 
+        {
             // Debug.Log($"Current Position: {transform.position}");
 
             float x = Random.Range(-500f, 500f);;

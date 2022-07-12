@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class CollisionJudge : MonoBehaviour
 {   
     private bool startFadOut = false;
+    private ScoreManager scoreManager;
+    private FadeOutTarget fadeOutTarget;
 
     void Start()
     {
-        
+        scoreManager = GameObject.Find("ScoreText").GetComponent<ScoreManager>();
+        fadeOutTarget = gameObject.GetComponent<FadeOutTarget>();
+        Debug.Log(fadeOutTarget);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -42,6 +46,14 @@ public class CollisionJudge : MonoBehaviour
         if (canDestroy)
         {
             Destroy(gameObject);
+            if (fadeOutTarget.rareTarget)
+            {
+                scoreManager.UpdateScore(500);
+            }
+            else
+            {
+                scoreManager.UpdateScore(50);
+            }
         }
     }
 }
