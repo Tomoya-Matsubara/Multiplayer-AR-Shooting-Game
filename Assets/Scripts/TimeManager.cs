@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
-    public float maxTime = 20f;
-    private float currentTime;
+    public float maxTime = 200f;
+    public float currentTime;
     private TextMeshProUGUI timeText;
 
     private DetectionStatusVariables detectionStatusVariables;

@@ -28,18 +28,21 @@ public class ButtonScript : MonoBehaviour
         {
             case 0: 
                 bulletPrefab = NormalBulletPrefab;
+                force = 100_000;
                 chargeTime = 0.5f;
                 break;
             case 1:
                 bulletPrefab = LargeBulletPrefab;
+                force = 90_000;
                 chargeTime = 1f;
                 break;
             case 2:
                 bulletPrefab = SmallBulletPrefab;
+                force = 100_000;
+                chargeTime = 0.2f;
                 break;
             default:
                 bulletPrefab = NormalBulletPrefab;
-                chargeTime = 0.2f;
                 break;
         }
     }
@@ -56,20 +59,38 @@ public class ButtonScript : MonoBehaviour
 
         if (Input.GetMouseButton(0)) 
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // Debug.Log($"Camera ray: {ray}");
-            // Debug.Log("Tapped!");
+            Vector3 position = Input.mousePosition;
 
-            // Instantiate the bullet
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            bullet.transform.localScale = 100 * Vector3.one;
-            bullet.transform.SetParent(BulletsContainer.transform, false);
-
-            // Shoot the bullet
-            bullet.GetComponent<BulletScript>().Shoot(ray.direction * force * 100);
+            Ray ray = Camera.main.ScreenPointToRay(position);
+            Shoot(ray);
 
             // Once the bullet has been shoot, reset the remaining time
             remainingTime = chargeTime;
+
+            if (BulletManager.bulletID == 2)
+            {
+                ray = Camera.main.ScreenPointToRay(position + Vector3.right * 100);
+                Shoot(ray);
+
+                ray = Camera.main.ScreenPointToRay(position + Vector3.left * 100);
+                Shoot(ray);
+
+                ray = Camera.main.ScreenPointToRay(position + Vector3.up * 10);
+                Shoot(ray);
+
+                ray = Camera.main.ScreenPointToRay(position + Vector3.down * 10);
+                Shoot(ray);
+            }
         }
+    }
+
+    void Shoot(Ray ray)
+    {
+        // Instantiate the bullet
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.transform.SetParent(BulletsContainer.transform, false);
+
+        // Shoot the bullet
+        bullet.GetComponent<BulletScript>().Shoot(ray.direction * force);
     }
 }
