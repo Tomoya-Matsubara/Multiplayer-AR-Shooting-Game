@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    public GameObject BulletPrefab;
+    // public GameObject BulletPrefab;
     float force = 1000f;
     public float chargeTime = 0.5f;
     private float remainingTime = 0.0f;

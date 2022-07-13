@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CollisionJudge : MonoBehaviour
 {   
     private bool startFadeOut = false;
+    private bool addScore = false;
     private FadeOutTarget fadeOutTarget;
 
     void Start()
@@ -29,6 +30,19 @@ public class CollisionJudge : MonoBehaviour
 
     void FadeOut()
     {
+        if (!addScore)
+        {
+            if (fadeOutTarget.rareTarget)
+            {
+                ScoreManager.UpdateScore(500);
+            }
+            else
+            {
+                ScoreManager.UpdateScore(50);
+            }
+            addScore = true;
+        }        
+
         Transform target = transform.Find("target");
         bool canDestroy = false;
         foreach (Transform child in target)
@@ -44,14 +58,6 @@ public class CollisionJudge : MonoBehaviour
         if (canDestroy)
         {
             Destroy(gameObject);
-            if (fadeOutTarget.rareTarget)
-            {
-                ScoreManager.UpdateScore(500);
-            }
-            else
-            {
-                ScoreManager.UpdateScore(50);
-            }
         }
     }
 }
