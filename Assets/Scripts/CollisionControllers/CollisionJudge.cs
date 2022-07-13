@@ -5,25 +5,23 @@ using UnityEngine.UI;
 
 public class CollisionJudge : MonoBehaviour
 {   
-    private bool startFadOut = false;
-    private ScoreManager scoreManager;
+    private bool startFadeOut = false;
     private FadeOutTarget fadeOutTarget;
 
     void Start()
     {
-        scoreManager = GameObject.Find("ScoreText").GetComponent<ScoreManager>();
         fadeOutTarget = gameObject.GetComponent<FadeOutTarget>();
         Debug.Log(fadeOutTarget);
     }
 
     void OnCollisionEnter(Collision collision)
     {   
-        startFadOut = true;
+        startFadeOut = true;
     }
 
     void Update()
     {
-        if (startFadOut)
+        if (startFadeOut)
         {
             FadeOut();
         }
@@ -48,11 +46,11 @@ public class CollisionJudge : MonoBehaviour
             Destroy(gameObject);
             if (fadeOutTarget.rareTarget)
             {
-                scoreManager.UpdateScore(500);
+                ScoreManager.UpdateScore(500);
             }
             else
             {
-                scoreManager.UpdateScore(50);
+                ScoreManager.UpdateScore(50);
             }
         }
     }

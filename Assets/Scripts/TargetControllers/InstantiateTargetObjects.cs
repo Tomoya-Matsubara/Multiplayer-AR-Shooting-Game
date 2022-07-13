@@ -27,7 +27,7 @@ public class InstantiateTargetObjects : MonoBehaviour
             return;
         }
 
-        if (currentTime >= 2) 
+        if (currentTime >= 1 + Random.value) 
         {
             // Debug.Log($"Current Position: {transform.position}");
 
