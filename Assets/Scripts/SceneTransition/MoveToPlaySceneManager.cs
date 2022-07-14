@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveToSampleScene : MonoBehaviour
+public class MoveToPlaySceneManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,8 +17,13 @@ public class MoveToSampleScene : MonoBehaviour
         
     }
 
-    public void ChangeScene()
+    public void MoveToShootingScene()
     {
-        SceneManager.LoadScene("ModeSelectScene");
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void MoveToJugglingScene()
+    {
+        SceneManager.LoadScene("CanShootScene");
     }
 }

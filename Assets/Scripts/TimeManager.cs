@@ -12,6 +12,8 @@ public class TimeManager : MonoBehaviour
 
     private DetectionStatusVariables detectionStatusVariables;
 
+    public bool targetShoot = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,12 @@ public class TimeManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("ResultScene");
+        if (targetShoot)
+            SceneManager.LoadScene("ResultScene");
+        else
+        {
+            CansConstant.Clear();
+            SceneManager.LoadScene("CansResultScene");
+        }
     }
 }
