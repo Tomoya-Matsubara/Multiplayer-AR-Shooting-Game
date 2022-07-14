@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CanShootScene.unity
     guid: 3ac98f97bdc884febbf74e58131e6ae8
+  - enabled: 1
+    path: Assets/Scenes/CansResultScene.unity
+    guid: f2fdb52f99dac4425ad33fb36a7254b8
   m_configObjects: {}

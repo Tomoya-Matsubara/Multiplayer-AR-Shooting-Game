@@ -12,8 +12,10 @@ public class PopCan : MonoBehaviour
     public GameObject remainingText;
     private RemainingManager remainingManager;
 
-    public GameObject arCamera;
+    public GameObject imageTarget;
     private DetectionStatusVariables detectionStatusVariables;
+
+    [SerializeField] private bool isDemo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class PopCan : MonoBehaviour
         // rigidBody.velocity += Vector3.down * 50;
 
         remainingManager = remainingText.GetComponent<RemainingManager>();
-        detectionStatusVariables = arCamera.GetComponent<DetectionStatusVariables>();
+        detectionStatusVariables = imageTarget.GetComponent<DetectionStatusVariables>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class PopCan : MonoBehaviour
         
         if (gravity)
         {
-            float force = 2f;
+            float force = 100f;
             rigidBody.AddForce(Vector3.down * force);
         }
 
@@ -45,7 +47,7 @@ public class PopCan : MonoBehaviour
             alive = false;
             gameObject.SetActive(false);
 
-            if (!countDown)
+            if (!countDown && !isDemo)
             {
                 remainingManager.DecreaseCount();
                 countDown = true;
@@ -63,7 +65,7 @@ public class PopCan : MonoBehaviour
         Destroy(other.gameObject);
         rigidBody.velocity = Vector3.zero;
         
-        float force = 50f;
+        float force = 100f;
         Vector3 direction = new Vector3(Random.value, force, Random.value);
         rigidBody.AddForce(direction, ForceMode.Impulse);
 

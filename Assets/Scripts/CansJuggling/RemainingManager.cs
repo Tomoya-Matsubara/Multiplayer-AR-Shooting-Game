@@ -20,17 +20,9 @@ public class RemainingManager : MonoBehaviour
     void Update()
     {
         remainingText.text = $"Remaining: {remaining}";
-
-        if (remaining == 0)
-            ChangeScene();
     }
 
     public void DecreaseCount()
-    {
-        remaining -= 1;
-    }
-
-    void ChangeScene()
     {
         CansConstant.GameOver();
         SceneManager.LoadScene("CansResultScene");
