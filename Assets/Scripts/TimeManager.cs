@@ -27,21 +27,17 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         if (!detectionStatusVariables.isMarkerDetected)
-        {
             return;
-        }
 
         currentTime -= Time.deltaTime;
         if (currentTime < 0)
-        {
             currentTime = 0;
-        }
+        
         timeText.text = $"Time: {(int) currentTime}";
 
         if (currentTime == 0)
-        {
             ChangeScene();
-        }
+        
     }
 
     void ChangeScene()

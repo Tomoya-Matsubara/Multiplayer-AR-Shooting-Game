@@ -48,9 +48,7 @@ public class FadeOutTarget : MonoBehaviour
     void Update()
     {
         if (!detectionStatusVariables.isMarkerDetected)
-        {
             return;
-        }
 
         currentTime += Time.deltaTime;
 
@@ -66,15 +64,11 @@ public class FadeOutTarget : MonoBehaviour
                 child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, (byte) fadeOutSpeed);
     
                 if (child.GetComponent<Renderer>().material.color.a <= 0)
-                {
                     canDestroy = true;
-                }
             }
 
             if (canDestroy)
-            {
                 Destroy(gameObject);
-            }
         }
     }
 }

@@ -23,23 +23,15 @@ public class CollisionJudge : MonoBehaviour
     void Update()
     {
         if (startFadeOut)
-        {
             FadeOut();
-        }
     }
 
     void FadeOut()
     {
         if (!addScore)
         {
-            if (fadeOutTarget.rareTarget)
-            {
-                ScoreManager.UpdateScore(500);
-            }
-            else
-            {
-                ScoreManager.UpdateScore(50);
-            }
+            int score = fadeOutTarget.rareTarget ? 500 : 50;
+            ScoreManager.UpdateScore(score);
             addScore = true;
         }        
 
@@ -50,14 +42,10 @@ public class CollisionJudge : MonoBehaviour
             child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, 2);
 
             if (child.GetComponent<Renderer>().material.color.a <= 0)
-            {
                 canDestroy = true;
-            }
         }
 
         if (canDestroy)
-        {
             Destroy(gameObject);
-        }
     }
 }

@@ -39,9 +39,8 @@ public class DetectionStatusVariables : MonoBehaviour
     void FadeOutMessage()
     {
         Color color = messageObject.transform.GetComponent<Image>().color;
-        if (color.a <= 0) {
+        if (color.a <= 0) 
             return;
-        }
 
         color.a -= 1;
 
@@ -61,18 +60,12 @@ public class DetectionStatusVariables : MonoBehaviour
         GameObject textObject = centerPanel.transform.GetChild(0).gameObject;
         TextMeshProUGUI text = textObject.GetComponent<TextMeshProUGUI>();
 
-         if (time >= 2)
-        {
+        if (time >= 2)
             text.text = "3";
-        }
         else if (time >= 1)
-        {
             text.text = "2";
-        }
         else if (time >= 0)
-        {
             text.text = "1";
-        }
         else if (time <= 0)
         {
             centerPanel.SetActive(false);

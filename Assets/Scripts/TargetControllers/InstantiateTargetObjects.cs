@@ -23,9 +23,7 @@ public class InstantiateTargetObjects : MonoBehaviour
         currentTime += Time.deltaTime;
 
         if (!detectionStatusVariables.isMarkerDetected)
-        {
             return;
-        }
 
         if (currentTime >= 1 + Random.value) 
         {

@@ -15,13 +15,6 @@ public class ButtonScript : MonoBehaviour
     public GameObject SmallBulletPrefab;
     private GameObject bulletPrefab;
 
-    public void lauchButton() //Shoot�{�^���������ꂽ��
-    {
-        // GameObject Bullet = Instantiate(Bulletprefab, transform.position, transform.rotation);
-        // Bullet.GetComponent<BulletScript>().Shoot(Bullet.transform.forward * force);
-        
-    }
-
     void Start()
     {
         switch (BulletManager.bulletID)
@@ -53,9 +46,7 @@ public class ButtonScript : MonoBehaviour
 
         // Have to wait for charging for `chargeTime`
         if (remainingTime > 0.0f)
-        {
             return;
-        }
 
         if (Input.GetMouseButton(0)) 
         {

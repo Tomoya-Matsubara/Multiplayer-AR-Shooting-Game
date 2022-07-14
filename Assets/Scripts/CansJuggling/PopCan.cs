@@ -21,7 +21,6 @@ public class PopCan : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        // rigidBody.velocity += Vector3.down * 50;
 
         remainingManager = remainingText.GetComponent<RemainingManager>();
         detectionStatusVariables = imageTarget.GetComponent<DetectionStatusVariables>();
@@ -54,11 +53,6 @@ public class PopCan : MonoBehaviour
             }
         }
     }
-
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     // Destroy(collision.gameObject);
-    // }
 
     void OnTriggerEnter(Collider other)
     {
