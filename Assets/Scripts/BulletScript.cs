@@ -7,6 +7,11 @@ public class BulletScript : MonoBehaviour
     public void Shoot(Vector3 dir) //shoot a bullet
     {
         GetComponent<Rigidbody>().AddForce(dir);
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 10);
+    }
+
+    void Update()
+    {
+
     }
 }

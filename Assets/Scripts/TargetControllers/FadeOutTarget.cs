@@ -14,6 +14,8 @@ public class FadeOutTarget : MonoBehaviour
     public float lifespan = 5f;
     private float currentTime = 0f;
 
+    public bool rareTarget = false;
+
     private DetectionStatusVariables detectionStatusVariables;
 
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class FadeOutTarget : MonoBehaviour
         // Make the target object with a probability of 10%
         if (Random.value <= 0.1)
         {
+            rareTarget = true;
             lifespan = 2f;
             Transform target = transform.Find("target");
             float offset = 0f;
@@ -45,9 +48,7 @@ public class FadeOutTarget : MonoBehaviour
     void Update()
     {
         if (!detectionStatusVariables.isMarkerDetected)
-        {
             return;
-        }
 
         currentTime += Time.deltaTime;
 
@@ -58,19 +59,16 @@ public class FadeOutTarget : MonoBehaviour
             bool canDestroy = false;
             foreach (Transform child in target)
             {
-                child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, 1);
-                print(child.GetComponent<Renderer>().material.color);
+                // Rare target fades out faster
+                int fadeOutSpeed = rareTarget? 2 : 1;
+                child.GetComponent<Renderer>().material.color -= new Color32(0, 0, 0, (byte) fadeOutSpeed);
     
                 if (child.GetComponent<Renderer>().material.color.a <= 0)
-                {
                     canDestroy = true;
-                }
             }
 
             if (canDestroy)
-            {
                 Destroy(gameObject);
-            }
         }
     }
 }

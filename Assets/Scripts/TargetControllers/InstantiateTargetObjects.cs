@@ -23,11 +23,10 @@ public class InstantiateTargetObjects : MonoBehaviour
         currentTime += Time.deltaTime;
 
         if (!detectionStatusVariables.isMarkerDetected)
-        {
             return;
-        }
 
-        if (currentTime >= 2) {
+        if (currentTime >= 1 + Random.value) 
+        {
             // Debug.Log($"Current Position: {transform.position}");
 
             float x = Random.Range(-500f, 500f);;
